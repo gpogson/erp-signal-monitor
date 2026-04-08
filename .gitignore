@@ -1,0 +1,8 @@
+.env
+seen_articles.db
+agent.log
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+.DS_Store
