@@ -45,8 +45,6 @@ def is_erp_relevant(entry: dict) -> tuple[bool, str]:
     """
     api_url = os.getenv("AI_API_URL", "").strip()
     api_key = os.getenv("AI_API_KEY", "").strip()
-    model = os.getenv("AI_MODEL", "").strip()
-
     if not api_url or not api_key:
         print("[ai_filter] AI_API_URL or AI_API_KEY not set — skipping AI filter, passing all articles.")
         return True, "", "AI filter not configured"
@@ -54,7 +52,7 @@ def is_erp_relevant(entry: dict) -> tuple[bool, str]:
     article_text = f"Title: {entry['title']}\n\nSummary: {entry['summary']}"
 
     payload = {
-        "model": model,
+        "model": "gpt-4o-mini",
         "messages": [
             {"role": "system", "content": ERP_PROMPT},
             {"role": "user", "content": article_text},
